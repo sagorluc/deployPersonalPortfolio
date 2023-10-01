@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block body %}
+
+<body class="about">
+    
+    <!-- Page Title Starts -->
+<section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+    <h1>ABOUT <span>ME</span></h1>
+    <span class="title-bg">Resume</span>
+</section>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section class="main-content revealator-slideup revealator-once revealator-delay1">
+    <div class="container">
+        <div class="row">
+
+            <!-- Personal Info Starts -->
+            <div class="col-12 col-lg-5 col-xl-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
+                    </div>
+                    {% for profile in  profiles %}
+                    <div class="col-12 d-block d-sm-none">
+                        <img src="{{profile.image.url}}" class="img-fluid main-img-mobile" alt="my picture" />
+                    </div>
+                    <div class="col-6">
+                        <ul class="about-list list-unstyled open-sans-font">
+
+                            
+                            <li> <span class="title">First name :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.first_name}} </span> </li>
+                            <li> <span class="title">Last name :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.last_name}} </span> </li> 
+                            <li> <span class="title">Age :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.age}} Years </span> </li> 
+                            <li> <span class="title">Nationality :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.nationality}} </span> </li> 
+                            <li> <span class="title">Freelance :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.freelance}} </span> </li> 
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="about-list list-unstyled open-sans-font">
+
+                            {% for profile in profiles %}
+                            <li> <span class="title">Address :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.address}} </span> </li> 
+                            <li> <span class="title">Phone :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.phone}} </span> </li> 
+                            <li> <span class="title">Email :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.email}} </span> </li> 
+                            <li> <span class="title">Skype :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.skype}} </span> </li> 
+                            <li> <span class="title">Instagrame :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.instagrame}} </span> </li> 
+                            <li> <span class="title">Languages :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.languages}} </span> </li> 
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <a class="button" href="#">
+                            <span class="button-text">Download CV</span>
+                            <span class="button-icon fa fa-download"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Personal Info Ends -->
+                        <!-- Boxes Starts -->
+                        <div class="col-12 col-lg-7 col-xl-6 mt-5 mt-lg-0">
+                            <div class="row">
+            
+                                {% for ac in achives %}
+            
+                                <div class="col-6">
+                                    <div class="box-stats with-margin">
+                                        <h3 class="poppins-font position-relative">{{ac.experience}}</h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">years of <span class="d-block">experience</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats with-margin">
+                                        <h3 class="poppins-font position-relative"> {{ac.complate_project}} </h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">completed <span class="d-block">projects</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats">
+                                        <h3 class="poppins-font position-relative"> {{ac.happy_customer}} </h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">Happy<span class="d-block">customers</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats">
+                                        <h3 class="poppins-font position-relative"> {{ac.award_won}} </h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">awards <span class="d-block">won</span></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Boxes Ends -->
+        </div>
+        <hr class="separator">
+        <!-- Skills Starts -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">My Skills</h3>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p65">
+                    <span>65%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">C</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p75">
+                    <span>75%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">C++</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p86">
+                    <span>86%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">PYTHON</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p95">
+                    <span>95%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">DJANGO</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p60">
+                    <span>60%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Django Rest Framework</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p70">
+                    <span>70%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">html</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p65">
+                    <span>65%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">css</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p50">
+                    <span>50%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Bootstrap5</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p45">
+                    <span>45%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Tailwind</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p23">
+                    <span>23%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">javascripts</h6>
+            </div>
+        </div>
+        <!-- Skills Ends -->
+        <hr class="separator mt-1">
+
+
+        <!-- Experience & Education Starts -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-uppercase pb-5 mb-0 text-left text-sm-center custom-title ft-wt-600">Experience <span>&</span> Education</h3>
+            </div>
+            <div class="col-lg-6 m-15px-tb">
+                <div class="resume-box">
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2020 - 2022</span>
+                            <h5 class="poppins-font text-uppercase">Retail Shop Manager <span class="place open-sans-font">Eco Retail Mart, Malaysia</span></h5>
+                            <p class="open-sans-font">As a retail shop manager from 2020 to 2022, I held a pivotal role in overseeing the day-to-day operations and overall performance of the retail establishment. My responsibilities were multifaceted, encompassing various aspects of the business. My role as a retail shop manager required a combination of leadership skills, business acumen, and customer-focused strategies. It involved a dynamic blend of tasks that contributed to the success and profitability of the retail establishment.</p>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2017 - 2019</span>
+                            <h5 class="poppins-font text-uppercase">F&B Team Leader <span class="place open-sans-font">Sunway Resort Hotel, Malaysia</span></h5>
+                            <p class="open-sans-font">As an F&B (Food and Beverage) Team Leader at Sunway Resort Hotel Malaysia from 2017 to 2019, I held a position of significant responsibility within the hospitality industry. My role was pivotal in ensuring the smooth and efficient operation of the F&B department.My role as an F&B Team Leader at Sunway Resort Hotel Malaysia required a combination of leadership skills, industry knowledge, and a commitment to delivering exceptional guest experiences. It was instrumental in upholding the reputation and success of the hotel's F&B department.</p>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2015 - 2016</span>
+                            <h5 class="poppins-font text-uppercase">Consultant Agent <span class="place open-sans-font">Lincoln University Collage, Malaysia</span></h5>
+                            <p class="open-sans-font">As an consultant agent for Lincoln University College, Malaysia from 2015 to 2016, I served as a vital link between prospective students and the institution. My role involved facilitating the admission process and providing essential information to help students make informed decisions about their education.My role as an consultant agent for Lincoln University College, Malaysia, was instrumental in connecting aspiring students with educational opportunities. Through My efforts, My contributed to the growth and diversity of the student body at the university during My tenure from 2015 to 2016.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 m-15px-tb">
+                <div class="resume-box">
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2023 - present</span>
+                            <h5 class="poppins-font text-uppercase">Software Engineering<span class="place open-sans-font">Phitron</span></h5>
+                            <p class="open-sans-font">Studying software engineering at Phitron in 2023 was an invaluable educational experience that equipped me with the skills and knowledge needed to excel in the field of software development. Phitron is renowned for its comprehensive curriculum and hands-on approach to teaching cutting-edge technologies.<br></br>The software engineering program at Phitron was likely designed to cover a wide range of topics, including programming languages, algorithms, data structures, software design patterns, and development methodologies. The curriculum would have been tailored to provide a well-rounded education in software engineering principles.</br><br>Overall, my experience at Phitron in 2023 provided me with a solid foundation in software engineering, preparing me to excel in the dynamic and ever-evolving field of software development. The skills and knowledge gained from this program position me for a successful and fulfilling career in the software engineering industry.</p>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2023 - present</span>
+                            <h5 class="poppins-font text-uppercase">H.S.C <span class="place open-sans-font">Lion Nazrul Islam university college</span></h5>
+                            <p class="open-sans-font">
+                                Studying Computer Operation at Lion Nazrul Islam University College at the intermediate level is a significant step towards building a foundation in information technology. This program is tailored to equip me with essential skills in computer usage, software applications, and advance programming concepts. <br><br>
+                                <b>Software Proficiency:</b> <br>
+                                Through your studies, i'm likely gaining proficiency in a range of software applications. This could include word processing, spreadsheet management, presentation software, and possibly even introductory programming tools. <br><br>
+                                <b>Computer Literacy:</b> <br>
+                                My program aims to make me computer literate, meaning I will have a strong grasp of fundamental computer operations, file management, and troubleshooting techniques. <br><br>
+                                <b>Problem-Solving Skills:</b><br>
+                                Computer Operation often involves troubleshooting and problem-solving.likely developing critical thinking skills as me learn to diagnose and address various technical issues. <br><br>
+                                <b>Preparation for Certification:</b><br>
+                                As my approach the end of 2023, i'm working towards obtaining a certification in Computer Operation. This certification serves as a tangible acknowledgment of my proficiency in the field.<br><br>
+                                My experience in studying Computer Operation at Lion Nazrul Islam University College in 2023 is a valuable investment in my future. The certification i will receive at the end of the year will be a testament to my proficiency in this essential field, opening doors to a variety of opportunities in the ever-evolving world of technology.</p>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">2012</span>
+                            <h5 class="poppins-font text-uppercase">S.S.C <span class="place open-sans-font">Binnafair High School</span></h5>
+                            <p class="open-sans-font">Completing my Secondary School Certificate (S.S.C) in 2012 with a focus on the science stream at Binnafair High School is a commendable achievement. This educational milestone marks the successful culmination of my secondary education, and it lays the groundwork for my future academic and career pursuits. <br><br>
+                                <b>Science-Focused Curriculum:</b><br>
+                                Pursuing a science stream indicates that my curriculum was centered around subjects like mathematics, physics, chemistry, biology, and possibly additional science-related electives. This specialized program provided me with a strong foundation in the sciences. <br><br>
+                                <b>Mathematical Proficiency:</b><br>
+                                A science-focused curriculum typically requires a strong grasp of mathematics, including algebra, geometry, and calculus. This mathematical foundation is crucial for tackling advanced scientific concepts. <br><br>
+                                Overall, my completion of S.S.C in the science stream at Binnafair High School in 2012 is a testament to my dedication to academic excellence and my commitment to pursuing a strong foundation in the sciences. This achievement positions me well for future academic and career successes in science-related fields.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Experience & Education Ends -->
+    </div>
+</section>
+<!-- Main Content Ends -->
+
+</body>
+
+{% endblock body %}

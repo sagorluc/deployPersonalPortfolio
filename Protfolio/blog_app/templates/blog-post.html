@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Blog-Post{% endblock title %}
+{% block body %}
+
+<body class="blog-post">
+    <!-- Page Title Starts -->
+<section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+    <h1>my <span>blog</span></h1>
+    <span class="title-bg">posts</span>
+</section>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section class="main-content revealator-slideup revealator-once revealator-delay1">
+    <div class="container" >
+        <div class="row">
+            <!-- Article Starts -->
+            <article class="col-12">
+                <!-- Meta Starts -->
+                <div class="meta open-sans-font">
+                    <span><i class="fa fa-user"></i> {{obj.user.first_name}} </span>
+                    <span class="date"><i class="fa fa-calendar"></i> {{obj.create_date}} </span>
+                    <span><i class="fa fa-tags"></i> {{obj.blog_type}} </span>
+                </div>
+                <!-- Meta Ends -->
+                <!-- Article Content Starts -->
+                <h1 class="text-uppercase text-capitalize"> {{obj.title}} </h1>
+                <img src="{{obj.image.url}}" class="img-fluid" alt="Blog image"/>
+                <div class="blog-excerpt open-sans-font pb-5">
+                    <p> {{obj.description}} </p>
+                </div>
+                <!-- Article Content Ends -->
+                <div style="margin-bottom: 20px;">
+
+                    <a href="{% url "update_blog" obj.id %}" id="update" class="btn btn-primary ml-2">Update Blog</a>
+                    <a href="{% url "delete_blog" obj.id %}" id="delete" class="btn btn-danger ml-2 ">Delete</a>
+
+
+                <!-- will show warning pop up and only superuser can update and delete-->
+                    <script>
+                        var isSuperUser = true;
+
+                        if (isSuperUser) {
+                            document.getElementById("update");
+                            document.getElementById("delete");
+                        }
+
+                        document.getElementById("update").addEventListener("click", function() {
+                            if (confirm("Are you sure you want to update this blog?")) {
+                                // Handle update action here
+                            }
+                        });
+                        
+                        document.getElementById("delete").addEventListener("click", function() {
+                            if (confirm("Are you sure you want to delete this blog?")) {
+                                // Handle delete action here
+                            }
+                        });
+
+                    </script>
+
+                </div>
+                <br>
+                
+            </article>
+            <!-- Article Ends -->
+           
+        </div>
+
+    </div>
+
+</section>
+</body>
+
+{% endblock body %}
