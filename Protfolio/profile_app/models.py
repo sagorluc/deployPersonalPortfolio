@@ -22,6 +22,10 @@ class MyProfile(models.Model):
     def __str__(self) -> str:
         return self.first_name
     
+class ResumeDownload(models.Model):
+    user = models.ForeignKey(MyProfile, on_delete= models.CASCADE, related_name="user_resume")
+    download_resume = models.URLField(blank= True)
+    
     
     
 class HomeProfile(models.Model):
