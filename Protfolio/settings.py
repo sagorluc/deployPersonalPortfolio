@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-me_b2%1^9l#4li5s_8^o6_-9g2mc-wvtgz(x&(b$1kup=hqqo=
 # DEBUG = True
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "sagor-personal-portfolio.onrender.com"]
 
 
 # Application definition
