@@ -1,4 +1,42 @@
-﻿{% extends "base.html" %}
+﻿<style>
+    .alert {
+        padding: 15px;
+        background-color: #a6f454; /* Red background color */
+        color: black; /* White text color */
+        margin-bottom: 15px;
+        transition: opacity 2s ease-out;
+    }
+    
+    .alert.error {
+        background-color: #ffcccb; /* Light red background color for error messages */
+        color: #8b0000; /* Dark red text color for error messages */
+    }
+    
+    .disabled-text {
+        background-color: #f0f0f0; /* Background color */
+        color: #555; /* Text color */
+        border: 1px solid #ddd; /* Border */
+        padding: 8px; /* Padding */
+        border-radius: 4px; /* Border radius */
+    }
+</style>
+
+<script>
+    // Function to hide messages smoothly after 5 seconds
+    // alert('reading from message')
+    setTimeout(function() {
+        var messages = document.querySelectorAll('.alert');
+        messages.forEach(function(message) {
+            message.style.opacity = '1';
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 1000); // Delay hiding the message after opacity transition
+        });
+    }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+
+{% extends "base.html" %}
 {% load static %}
 {% block title %}Blog{% endblock title %}
 {% block body %}
@@ -11,6 +49,20 @@
     <span class="title-bg">posts</span>
 </section>
 <!-- Page Title Ends -->
+
+<!-- Messages -->
+<div style="width: 23%; margin: auto;">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}error{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
 <!-- Main Content Starts -->
 <section class="main-content revealator-slideup revealator-once revealator-delay1">
     <div class="container">
@@ -77,7 +129,12 @@
                 {% endif %}
             </div> <br>
             
-                <a href="{% url "create_blog"  %}" class="btn btn-primary ">Create Blog</a>     
+                <a href="{% url "create_blog"  %}" class="btn btn-primary mr-3">Create Blog</a> 
+                {% if request.user.is_authenticated %}
+                    <a href="{% url "logout"  %}" class="btn btn-primary ">Logout</a>
+                {% else %}    
+                    <a href="{% url "login_form"  %}" class="btn btn-primary ">Superuser login</a>
+                {% endif %}     
                
           
     </div>

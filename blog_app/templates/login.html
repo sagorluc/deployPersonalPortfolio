@@ -37,59 +37,25 @@
 
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Contact{% endblock title %}
+{% block title %}login{% endblock title %}
 {% block body %}
 
 <body class="contact">
     
     <!-- Page Title Starts -->
 <section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
-    <h1>get in <span>touch</span></h1>
-    <span class="title-bg">contact</span>
+    <h1>Log <span>in</span></h1>
+    <span class="title-bg">Login</span>
 </section>
 <!-- Page Title Ends -->
 
 
 <!-- Main Content Starts -->
-<section class="main-content revealator-slideup revealator-once revealator-delay1">
+<section class="main-content align-items-center">
     <div class="container">
         <div class="row">
-            <!-- Left Side Starts -->
-            <div class="col-12 col-lg-4">
-                <h3 class="text-uppercase custom-title mb-0 ft-wt-600 pb-3">Don't be shy !</h3>
-                <p class="open-sans-font mb-3">Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-                
-                {% for soci in socials  %}
-                    <p class="open-sans-font custom-span-contact position-relative">
-                        <i class="fa fa-envelope-open position-absolute"></i>
-                        <span class="d-block">mail me</span>{{soci.social.email}}
-                    </p>
-                    <p class="open-sans-font custom-span-contact position-relative">
-                        <i class="fa fa-phone-square position-absolute"></i>
-                        <span class="d-block">call me</span>{{soci.social.phone}}
-                    </p>
-                {% endfor %}
-                <ul class="social list-unstyled pt-1 mb-5">
-                    {% for soci in socials %}
-                        <li class="facebook"><a title="Facebook" href="{{soci.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="twitter"><a title="Twitter" href="{{soci.x}}" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="youtube"><a title="Youtube" href="{{soci.youtube}}" target="_blank"><i class="fa fa-youtube" ></i></a>
-                        </li>
-                        <li class="linkedin"><a title="linkedin" href="{{soci.linkdin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li class="instagram"><a title="Instagram" href="{{soci.instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <li class="github"><a title="Github" href="{{soci.github}}" target="_blank"><i class="fa fa-github"></i></a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- Left Side Ends -->
-
             <!-- Contact Form Starts -->
-            <div class="col-12 col-lg-8">
+            <div class="col-12 align-items-center">
 
                 <!--======================== START FORM ===========================-->
                 <form class="contactform" method="post">
@@ -97,25 +63,18 @@
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
-                                {{ form.name }}
+                                <input type="text" name="username" id="" placeholder="Enter username">
                             </div>
                             <div class="col-12 col-md-4">
-                                {{ form.email }}
+                                <input type="password" name="password" id="" placeholder="Enter password">
                             </div>
-                            <div class="col-12 col-md-4">
-                                {{ form.phone }}
-                            </div>
-                            <div class="col-12 col-md-4">
-                                {{ form.subject }}
-                            </div>
+
                             <div class="col-12">
-                                {{ form.message }}
                                 <button type="submit" class="button">
                                     <span class="button-text">Send Message</span>
                                     <span class="button-icon fa fa-send"></span>
                                 </button>
                             </div>
-
                             <!-- Message Area -->
                             <!-- Messages -->
                             <div style="width: 23%; margin: auto;">

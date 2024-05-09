@@ -3,8 +3,9 @@ from profile_app.models import MyProfile
 
 # Create your models here.
 class Blog(models.Model):
-      user        = models.ForeignKey(MyProfile, on_delete=models.CASCADE, related_name="user")
+      user        = models.ForeignKey(MyProfile, on_delete=models.CASCADE, related_name="user", blank=True, null=True)
       id          = models.AutoField(unique=True, primary_key= True)
+      writer_name = models.CharField(max_length=50, blank=True, null=True)
       blog_type   = models.CharField(max_length= 50)
       image       = models.ImageField(upload_to='photos/blog_image', blank=True)
       title       = models.CharField(max_length= 50)

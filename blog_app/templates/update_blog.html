@@ -1,3 +1,41 @@
+<style>
+    .alert {
+        padding: 15px;
+        background-color: #a6f454; /* Red background color */
+        color: black; /* White text color */
+        margin-bottom: 15px;
+        transition: opacity 2s ease-out;
+    }
+    
+    .alert.error {
+        background-color: #ffcccb; /* Light red background color for error messages */
+        color: #8b0000; /* Dark red text color for error messages */
+    }
+    
+    .disabled-text {
+        background-color: #f0f0f0; /* Background color */
+        color: #555; /* Text color */
+        border: 1px solid #ddd; /* Border */
+        padding: 8px; /* Padding */
+        border-radius: 4px; /* Border radius */
+    }
+</style>
+
+<script>
+    // Function to hide messages smoothly after 5 seconds
+    // alert('reading from message')
+    setTimeout(function() {
+        var messages = document.querySelectorAll('.alert');
+        messages.forEach(function(message) {
+            message.style.opacity = '1';
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 1000); // Delay hiding the message after opacity transition
+        });
+    }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Update Blog{% endblock title %}
@@ -5,6 +43,19 @@
 {% load crispy_forms_tags %}
 
 <body class="blog-post">
+
+<!-- Messages -->
+<div style="width: 23%; margin: auto;">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}error{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
     
 <div style="margin-top: 40px;">
     <form  method="POST" enctype="multipart/form-data" style="width: 50%; margin: auto;">

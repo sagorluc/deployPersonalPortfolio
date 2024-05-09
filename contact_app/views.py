@@ -1,7 +1,8 @@
-# from django.shortcuts import render
-# from contact_app.forms import ContactForm
-# from contact_app.models import ContactInformation
-# from django.contrib import messages
+from django.shortcuts import render, redirect
+from contact_app.forms import ContactForm
+from contact_app.models import ContactInformation, SocialMediaLink
+from django.contrib import messages
+
 
 # # Create your views here.
 # def contact(request):   
@@ -23,21 +24,23 @@
 #     return render(request, 'contact.html')
 
 
-from django.shortcuts import render
-from contact_app.forms import ContactForm
-from contact_app.models import ContactInformation, SocialMediaLink
-from django.contrib import messages
 
-def contact(request):   
+def contact(request):     
+    social_media = SocialMediaLink.objects.all()  
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Message sent successfully")
+            return redirect('contact')
         else:
-            messages.error(request, "Please fill out all the fields")
+            messages.error(request, "Invalid form")
+            return redirect('contact')
     else:
         form = ContactForm()
-    
-    social_media = SocialMediaLink.objects.all()  
-    return render(request, 'contact.html', {"form": form, 'socials': social_media})
+          
+    context = {
+        "form": form, 
+        'socials': social_media
+    }
+    return render(request, 'contact.html', context)
