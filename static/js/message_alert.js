@@ -1,5 +1,5 @@
 // Function to hide messages smoothly after 5 seconds
-alert('reading from message')
+// alert('reading from message')
 setTimeout(function() {
     var messages = document.querySelectorAll('.alert');
     messages.forEach(function(message) {
