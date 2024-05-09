@@ -49,6 +49,19 @@
 </section>
 <!-- Page Title Ends -->
 
+<!-- Message Area -->
+<div style="width: 23%; margin: auto;">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}error{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<!-- End Message Area -->
 
 <!-- Main Content Starts -->
 <section class="main-content revealator-slideup revealator-once revealator-delay1">
@@ -92,7 +105,7 @@
             <div class="col-12 col-lg-8">
 
                 <!--======================== START FORM ===========================-->
-                <form class="contactform" method="post">
+                <form class="contactform" method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
                     <div class="contactform">
                         <div class="row">
@@ -115,21 +128,6 @@
                                     <span class="button-icon fa fa-send"></span>
                                 </button>
                             </div>
-
-                            <!-- Message Area -->
-                            <!-- Messages -->
-                            <div style="width: 23%; margin: auto;">
-                                {% if messages %}
-                                <div class="messages">
-                                    {% for message in messages %}
-                                    <div class="alert {% if message.tags == 'error' %}error{% endif %}">
-                                        {{ message }}
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
-                            </div>
-                        <!-- End Message Area -->
                         </div>
                     </div>
                 </form>
