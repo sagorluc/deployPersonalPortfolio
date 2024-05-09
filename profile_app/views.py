@@ -3,15 +3,17 @@ from profile_app.models import MyProfile, Achivement, MyPortFolio, ResumeDownloa
 
 # Create your views here.
 def about_me(request):
+    resume_obj = ResumeDownload.objects.all()
     all_obj = MyProfile.objects.all()
     achive = Achivement.objects.all() 
     
     context = {
-        'profiles': all_obj,
-         'achives': achive
+        'resume_profile': zip(resume_obj, all_obj),
+        # 'resume_profile': all_obj,
+        'achive_obj': achive
     }
     
-    return render(request, 'about.html')
+    return render(request, 'about.html', context)
 
 
 

@@ -17,47 +17,49 @@
         <div class="row">
 
             <!-- Personal Info Starts -->
-            <div class="col-12 col-lg-5 col-xl-6">
+            <div class="text-center">
                 <div class="row">
                     <div class="col-12">
                         <h3 class="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
                     </div>
-                    {% for profile in  profiles %}
+
+                  {% for resume, profile in  resume_profile %}
+                    <!-- This image for small screen -->
                     <div class="col-12 d-block d-sm-none">
                         <img src="{{profile.image.url}}" class="img-fluid main-img-mobile" alt="my picture" />
                     </div>
+
                     <div class="col-6">
-                        <ul class="about-list list-unstyled open-sans-font">
 
-                            
-                            <li> <span class="title">First name :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.first_name}} </span> </li>
-                            <li> <span class="title">Last name :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.last_name}} </span> </li> 
-                            <li> <span class="title">Age :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.age}} Years </span> </li> 
-                            <li> <span class="title">Nationality :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.nationality}} </span> </li> 
-                            <li> <span class="title">Freelance :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.freelance}} </span> </li> 
+                        <ul class="about-list list-unstyled open-sans-font">                            
+                            <li> <span class="title">First name :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.first_name}} </span> </li>
+                            <li> <span class="title">Last name :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.last_name}} </span> </li> 
+                            <li> <span class="title">Age :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.age}} Years </span> </li> 
+                            <li> <span class="title">Nationality :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.nationality}} </span> </li> 
+                            <li> <span class="title">Freelance :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.freelance}} </span> </li> 
+                        </ul>
+                        
+                    </div>
 
-                            {% endfor %}
+                    <div class="col-6">
+                        <ul class="about-list list-unstyled open-sans-font">                   
+                            <li> <span class="title">Address :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.address}} </span> </li> 
+                            <li> <span class="title">Phone :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.phone}} </span> </li> 
+                            <li> <span class="title">Email :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.email}} </span> </li> 
+                            <li> <span class="title">Skype :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.skype}} </span> </li> 
+                            <li> <span class="title">Instagrame :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.instagrame}} </span> </li> 
+                            <li> <span class="title">Languages :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.languages}} </span> </li> 
+                          
                         </ul>
                     </div>
-                    <div class="col-6">
-                        <ul class="about-list list-unstyled open-sans-font">
-
-                            {% for profile in profiles %}
-                            <li> <span class="title">Address :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.address}} </span> </li> 
-                            <li> <span class="title">Phone :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.phone}} </span> </li> 
-                            <li> <span class="title">Email :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.email}} </span> </li> 
-                            <li> <span class="title">Skype :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.skype}} </span> </li> 
-                            <li> <span class="title">Instagrame :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.instagrame}} </span> </li> 
-                            <li> <span class="title">Languages :</span> <br> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{profile.languages}} </span> </li> 
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    
                     <div class="col-12 mt-3">
-                        <a class="button" href="https://drive.google.com/file/d/1ICU2gq1QOUyRl4VsMIYq2Xe2GqE41p97/view?usp=sharing" target="_blank">
+                        <a class="button" href="{{resume.download_resume}}" target="_blank">
                             <span class="button-text">Download Resume</span>
                             <span class="button-icon fa fa-download"></span>
                         </a>
                     </div>
+                  {% endfor %}
                 </div>
             </div>
             <!-- Personal Info Ends -->
@@ -103,6 +105,36 @@
                 <h3 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">My Skills</h3>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p96">
+                    <span>96%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Python</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p96">
+                    <span>96%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Django</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p85">
+                    <span>85%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Django Rest Framework</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
                 <div class="c100 p65">
                     <span>65%</span>
                     <div class="slice">
@@ -113,8 +145,8 @@
                 <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">C</h6>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p75">
-                    <span>75%</span>
+                <div class="c100 p70">
+                    <span>70%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -123,24 +155,34 @@
                 <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">C++</h6>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p86">
-                    <span>86%</span>
+                <div class="c100 p90">
+                    <span>90%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">PYTHON</h6>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">html</h6>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p95">
-                    <span>95%</span>
+                <div class="c100 p90">
+                    <span>90%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">DJANGO</h6>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">css</h6>
+            </div>
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p90">
+                    <span>90%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Bootstrap5</h6>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
                 <div class="c100 p60">
@@ -150,51 +192,11 @@
                         <div class="fill"></div>
                     </div>
                 </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Django Rest Framework</h6>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p70">
-                    <span>70%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">html</h6>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p65">
-                    <span>65%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">css</h6>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p50">
-                    <span>50%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>
-                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Bootstrap5</h6>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p45">
-                    <span>45%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
-                </div>
                 <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">Tailwind</h6>
             </div>
             <div class="col-6 col-md-3 mb-3 mb-sm-5">
-                <div class="c100 p23">
-                    <span>23%</span>
+                <div class="c100 p60">
+                    <span>60%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -219,11 +221,20 @@
                             <div class="icon">
                                 <i class="fa fa-briefcase"></i>
                             </div>
-                            <span class="time open-sans-font text-uppercase">2024 - present</span>
-                            <h5 class="poppins-font text-uppercase">Backend-Developer<span class="place open-sans-font">Backend-Developer, <a target="_blank" href="">LegoIO</a> </span></h5>
-                            <p class="open-sans-font">● Responsible for maintaining scalable backend solutions <br>
-                                ● collaborating cross-functionally, and setting up databases. <br>
-                                ● Proficient in technologies and tools Python, Django, Mysql, Postgresql etc.</p>
+                            <span class="time open-sans-font text-uppercase">01 January, 2024 - present</span>
+                            <h5 class="poppins-font text-uppercase">Backend-Developer<span class="place open-sans-font">United States, Remote <a target="_blank" href="https://www.legoio.com/">LegoIO</a> </span></h5>
+                            <p class="open-sans-font">
+                                ● In my first project, I worked on existing code, developing new features/components for the backend, and
+                                  troubleshooting issues. The main challenge I faced was understanding and enhancing the existing
+                                  codebase while implementing new functionalities within the framework of the project. <br><br>
+                                ● In my second project, I worked on existing code that underwent a complete transformation into a new
+                                  project derived from another. The challenge involved database maintenance and reorganizing the entire
+                                  backend codebase to align with the updated project requirements. <br><br>
+                                ● In my third project, I developed the backend from scratch and served as the sole backend developer for
+                                  this initiative. The primary challenge involved designing and maintaining a dashboard for various
+                                  administrative users with distinct roles and permissions. <br><br>
+                                ● Proficient in technologies and tools Python, Django, JavaScript, Html, Css, Mysql, Postgresql etc. <br>
+                            </p>
                         </li>
                         <li>
                             <div class="icon">
@@ -259,7 +270,7 @@
                             <div class="icon">
                                 <i class="fa fa-graduation-cap"></i>
                             </div>
-                            <span class="time open-sans-font text-uppercase">2023 - present</span>
+                            <span class="time open-sans-font text-uppercase">September, 2022 - October, 2023</span>
                             <h5 class="poppins-font text-uppercase">Software Engineering<span class="place open-sans-font">Phitron</span></h5>
                             <p class="open-sans-font">Studying software engineering at Phitron in 2023 was an invaluable educational experience that equipped me with the skills and knowledge needed to excel in the field of software development. Phitron is renowned for its comprehensive curriculum and hands-on approach to teaching cutting-edge technologies.<br></br>The software engineering program at Phitron was likely designed to cover a wide range of topics, including programming languages, algorithms, data structures, software design patterns, and development methodologies. The curriculum would have been tailored to provide a well-rounded education in software engineering principles.</br><br>Overall, my experience at Phitron in 2023 provided me with a solid foundation in software engineering, preparing me to excel in the dynamic and ever-evolving field of software development. The skills and knowledge gained from this program position me for a successful and fulfilling career in the software engineering industry.</p>
                         </li>
@@ -267,7 +278,7 @@
                             <div class="icon">
                                 <i class="fa fa-graduation-cap"></i>
                             </div>
-                            <span class="time open-sans-font text-uppercase">2023 - present</span>
+                            <span class="time open-sans-font text-uppercase">2021 - 2023</span>
                             <h5 class="poppins-font text-uppercase">H.S.C <span class="place open-sans-font">Lion Nazrul Islam university college</span></h5>
                             <p class="open-sans-font">
                                 Studying Computer Operation at Lion Nazrul Islam University College at the intermediate level is a significant step towards building a foundation in information technology. This program is tailored to equip me with essential skills in computer usage, software applications, and advance programming concepts. <br><br>
