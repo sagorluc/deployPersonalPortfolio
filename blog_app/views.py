@@ -51,9 +51,15 @@ def superuser_login(request):
             messages.error(request, 'User not founded')
             return redirect('login_form')
 
-
+    form = UserForm(request.POST)
+    if not form.is_valid():
+        return render(request, 'login.html', {'form': form}) # will throw the form validation error
+    
+    context = {
+        'form': form,
+    }
     template = 'login.html'
-    return render(request, template)
+    return render(request, template, context)
 
 # =================================== Logout superuser ==================================
 def log_out(request):
@@ -81,8 +87,9 @@ def create_blog(request):
             messages.success(request, 'Your blog is created successfully.')
             return redirect('blog')
         else:
-            messages.error(request, 'Invalid form')
-            return redirect('create_blog')
+            # messages.error(request, 'Invalid form')
+            # return redirect('create_blog')
+            return render(request, 'create_blog.html', {'form': form}) # will throw the form validation error
     else:
         form = BlogForm()
         
@@ -105,8 +112,9 @@ def update_blog(request, id):
                 messages.success(request, 'Your blog is updated successfully')
                 return redirect('blog-post', id= get_id.id)
             else:
-                messages.error(request, 'Invalid form')
-                return redirect('update_blog', id=id)
+                # messages.error(request, 'Invalid form')
+                # return redirect('update_blog', id=id)
+                return render(request, 'update_blog.html', {'form': form}) # will throw the form validation error
         else:
             form = BlogForm(instance=get_id)
             
@@ -116,7 +124,7 @@ def update_blog(request, id):
         return render(request, 'update_blog.html', context)
     
     else:
-        messages.error(request, 'Only boss is allow to update blog')
+        messages.error(request, 'Not allowed !!')
         return redirect('blog-post', id= get_id.id)
 
 
@@ -129,7 +137,7 @@ def delete_blog(request, id):
         messages.success(request, 'Your blog is deleted successfully.')
         return redirect('blog')
     else:
-        messages.error(request, 'Only boss is allow to delete blog')
+        messages.error(request, 'Not Allowed !!')
         return redirect('blog-post', id=id)
         
         

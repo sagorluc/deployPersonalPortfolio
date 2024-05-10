@@ -34,8 +34,9 @@ def contact(request):
             messages.success(request, "Message sent successfully")
             return redirect('contact')
         else:
-            messages.error(request, "Invalid form")
-            return redirect('contact')
+            # messages.error(request, "Invalid form.")
+            # return redirect('contact')
+            return render(request, 'contact.html', {'form': form}) # will throw the form validation error
     else:
         form = ContactForm()
           

@@ -57,12 +57,20 @@
   {% endif %}
 </div>
 
+
+<!-- Sending validation error of field -->
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field, error in form.errors.items %}
+            {{ field|title }}: {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
+
 <div style="margin-top: 40px;">
-  <form method="POST" enctype="multipart/form-data" style="width: 50%; margin: auto; pt-20">
+  <form method="POST" enctype="multipart/form-data" style="width: 50%; margin: auto; pt-20" novalidate>
     {% csrf_token %}
-
     {{form | crispy}}
-
     <button class="btn btn-primary" type="submit" style="margin-bottom: 40px;">Create</button>
 
   </form>

@@ -74,7 +74,11 @@
                 <article class="post-container">                
                     <div class="post-thumb">
                         <a href="{% url 'blog-post' blog.id %}" class="d-block position-relative overflow-hidden">
-                            <img src=" {{blog.image.url}} " class="img-fluid" alt="Blog Post">
+                            {% if blog.image %}
+                                <img src=" {{blog.image.url}} " class="img-fluid" alt="Blog Post">
+                            {% else %}
+                                <strong class="text-danger">No image available</strong>
+                            {% endif %}
                         </a>
                     </div>
                     <div class="post-content">              

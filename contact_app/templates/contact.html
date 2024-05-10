@@ -61,6 +61,16 @@
     </div>
     {% endif %}
 </div>
+
+
+<!-- Sending validation error of field -->
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field, error in form.errors.items %}
+            {{ field|title }}: {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
 <!-- End Message Area -->
 
 <!-- Main Content Starts -->
@@ -105,7 +115,7 @@
             <div class="col-12 col-lg-8">
 
                 <!--======================== START FORM ===========================-->
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" novalidate>
                     {% csrf_token %} 
                     <div class="contactform">
                         <div class="row">

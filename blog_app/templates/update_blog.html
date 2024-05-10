@@ -56,6 +56,16 @@
     </div>
     {% endif %}
 </div>
+
+
+<!-- Sending validation error of field -->
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field, error in form.errors.items %}
+            {{ field|title }}: {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
     
 <div style="margin-top: 40px;">
     <form  method="POST" enctype="multipart/form-data" style="width: 50%; margin: auto;">
